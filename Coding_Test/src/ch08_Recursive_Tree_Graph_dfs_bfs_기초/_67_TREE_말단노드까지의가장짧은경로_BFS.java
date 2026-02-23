@@ -2,8 +2,11 @@ package ch08_Recursive_Tree_Graph_dfs_bfs_기초;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Scanner;
 
-public class _64_이진트리레벨탐색_BFS {
+public class _67_TREE_말단노드까지의가장짧은경로_BFS {
+	Node root;
+
 	static class Node {
 		int data;
 		Node lt, rt;
@@ -14,39 +17,40 @@ public class _64_이진트리레벨탐색_BFS {
 		}
 	}
 
-	Node root;
-
-	public void BFS(Node root) {
-		Queue<Node> Q = new LinkedList<>();
+	public int BFS(Node root) {
+		Queue<Node> Q = new LinkedList<Node>();
 		Q.offer(root);
 		int L = 0;
-
 		while (!Q.isEmpty()) {
 			int len = Q.size();
-			System.out.print(L + " : ");
+
 			for (int i = 0; i < len; i++) {
 				Node cur = Q.poll();
-				System.out.print(cur.data + " ");
-				if (cur.lt != null)
+
+				if (cur.lt == null && cur.rt == null) {
+					return L;
+				}
+				if (cur.lt != null) {
 					Q.offer(cur.lt);
-				if (cur.rt != null)
+				}
+				if (cur.lt != null) {
 					Q.offer(cur.rt);
+				}
 			}
 			L++;
-			System.out.println();
 		}
+		return L;
 	}
 
 	public static void main(String[] args) {
-		_64_이진트리레벨탐색_BFS tree = new _64_이진트리레벨탐색_BFS();
+		_67_TREE_말단노드까지의가장짧은경로_BFS tree = new _67_TREE_말단노드까지의가장짧은경로_BFS();
+
 		tree.root = new Node(1);
 		tree.root.lt = new Node(2);
 		tree.root.rt = new Node(3);
 		tree.root.lt.lt = new Node(4);
 		tree.root.lt.rt = new Node(5);
-		tree.root.rt.lt = new Node(6);
-		tree.root.rt.rt = new Node(7);
 
-		tree.BFS(tree.root);
+		System.out.println(tree.BFS(tree.root));
 	}
 }
