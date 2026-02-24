@@ -1,16 +1,17 @@
 package ch08_Recursive_Tree_Graph_dfs_bfs_기초.review;
 
-class Node {
-	int data;
-	Node lt, rt;
-
-	public Node(int val) {
-		data = val;
-		lt = rt = null;
-	}
-}
-
 public class _62_이진트리순회_DFS {
+
+	static class Node {
+		int data;
+		Node lt, rt;
+
+		public Node(int val) {
+			data = val;
+			lt = rt = null;
+		}
+	}
+
 	Node root;
 
 	public void DFS(Node root) {
