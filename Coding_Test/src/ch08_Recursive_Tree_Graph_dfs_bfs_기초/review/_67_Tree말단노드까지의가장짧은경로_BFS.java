@@ -16,7 +16,6 @@ public class _67_Tree말단노드까지의가장짧은경로_BFS {
 
 	public int BFS(Node root) {
 		Queue<Node> Q = new LinkedList<Node>();
-
 		Q.offer(root);
 		int L = 0;
 

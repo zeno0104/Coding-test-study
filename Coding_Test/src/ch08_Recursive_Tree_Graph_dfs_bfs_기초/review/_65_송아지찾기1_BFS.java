@@ -5,30 +5,31 @@ import java.util.Queue;
 import java.util.Scanner;
 
 public class _65_송아지찾기1_BFS {
-
-	// -- my solution
+//
+//	static int s;
+//	static int e;
 //	static int L = 0;
-//	static int s = 0;
-//	static int e = 0;
+//	static Queue<Integer> Q = new LinkedList<Integer>();
 //
-//	static Queue<Integer> Q = new LinkedList<>();
-//
-//	public static int BFS(int start) {
+//	public static void BFS() {
 //
 //		while (!Q.isEmpty()) {
 //			int len = Q.size();
+//
 //			for (int i = 0; i < len; i++) {
-//				int num = Q.poll();
-//				if (num == e) {
-//					return L;
+//				int curr = Q.poll();
+//				if (curr == e) {
+//					System.out.println(L);
+//					return;
 //				}
-//				Q.offer(num + 1);
-//				Q.offer(num - 1);
-//				Q.offer(num + 5);
+//				Q.offer(curr + 1);
+//				Q.offer(curr - 1);
+//				Q.offer(curr + 5);
 //			}
+//
 //			L++;
 //		}
-//		return L;
+//
 //	}
 //
 //	public static void main(String[] args) {
@@ -37,8 +38,7 @@ public class _65_송아지찾기1_BFS {
 //		s = sc.nextInt();
 //		e = sc.nextInt();
 //		Q.offer(s);
-//		int result = BFS(s);
-//		System.out.println(result);
+//		BFS();
 //	}
 
 	int answer = 0;
@@ -50,7 +50,9 @@ public class _65_송아지찾기1_BFS {
 		ch = new int[10001];
 		ch[s] = 1;
 		Q.offer(s);
+
 		int L = 0;
+
 		while (!Q.isEmpty()) {
 			int len = Q.size();
 			for (int i = 0; i < len; i++) {
@@ -63,13 +65,13 @@ public class _65_송아지찾기1_BFS {
 					if (nx >= 1 && nx <= 10000 && ch[nx] == 0) {
 						ch[nx] = 1;
 						Q.offer(nx);
+
 					}
 				}
 			}
 			L++;
 		}
 		return 0;
-
 	}
 
 	public static void main(String[] args) {
@@ -77,7 +79,6 @@ public class _65_송아지찾기1_BFS {
 		Scanner sc = new Scanner(System.in);
 		int s = sc.nextInt();
 		int e = sc.nextInt();
-
 		System.out.println(T.BFS(s, e));
 	}
 }

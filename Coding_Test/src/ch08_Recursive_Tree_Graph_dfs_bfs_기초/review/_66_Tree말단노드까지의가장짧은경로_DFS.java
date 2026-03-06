@@ -1,7 +1,5 @@
 package ch08_Recursive_Tree_Graph_dfs_bfs_기초.review;
 
-import ch08_Recursive_Tree_Graph_dfs_bfs_기초.review._64_이진트리레벨탐색_BFS.Node;
-
 public class _66_Tree말단노드까지의가장짧은경로_DFS {
 	static class Node {
 		int data;

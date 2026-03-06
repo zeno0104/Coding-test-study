@@ -1,9 +1,8 @@
-package ch08_Recursive_Tree_Graph_dfs_bfs_기초;
+package ch08_Recursive_Tree_Graph_dfs_bfs_기초.review;
 
 import java.util.Scanner;
 
 public class _69_경로탐색_DFS {
-
 	static int n, m, answer = 0;
 	static int[][] graph;
 	static int[] ch;

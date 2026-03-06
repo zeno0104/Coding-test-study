@@ -19,9 +19,9 @@ public class _62_이진트리순회_DFS {
 			return;
 
 		System.out.print(root.data + " "); // 전위순회
-		DFS(root.rt);
-		// 중위순회
 		DFS(root.lt);
+		// 중위순회
+		DFS(root.rt);
 		// 후위순회
 	}
 

@@ -17,10 +17,10 @@ public class _64_이진트리레벨탐색_BFS {
 	Node root;
 
 	public void BFS(Node root) {
-		Queue<Node> Q = new LinkedList<>();
+		Queue<Node> Q = new LinkedList<Node>();
+
 		Q.offer(root);
-		int L = 0; // 레벨은 거리를 잡는 개념
-		// 즉, 몇번만에 도착했는지 와 같은 개념에서 쓰이는 것!
+		int L = 0;
 
 		while (!Q.isEmpty()) {
 			int len = Q.size();
@@ -28,10 +28,8 @@ public class _64_이진트리레벨탐색_BFS {
 
 			for (int i = 0; i < len; i++) {
 				Node cur = Q.poll();
-				System.out.print(cur.data + " ");
 
-				// null이면 말단노드라는 의미
-				// 각각 null 체크 꼭 하기!
+				System.out.print(cur.data + " ");
 				if (cur.lt != null)
 					Q.offer(cur.lt);
 				if (cur.rt != null)
