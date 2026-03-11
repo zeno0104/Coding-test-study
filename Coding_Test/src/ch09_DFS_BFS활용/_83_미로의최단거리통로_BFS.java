@@ -43,7 +43,6 @@ public class _83_미로의최단거리통로_BFS {
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
-
 		board = new int[8][8];
 		dis = new int[8][8];
 
