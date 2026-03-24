@@ -1,58 +1,21 @@
-import java.util.*;
 
+import java.util.ArrayList;
 class Solution {
-    public int[] solution(int[] answers) {
-        int[] answer;
-        int[] first = {1, 2, 3, 4, 5};
-        int[] second = {2, 1, 2, 3, 2, 4, 2, 5};
-        int[] three = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
-        
-        int firstCheck = 0;
-        int secondCheck = 0;
-        int threeCheck = 0;
-         
-        for(int i = 0; i < answers.length; i++){
-            
-            
-            if(answers[i] == first[i % first.length]){
-                firstCheck++;
-            }
-            if(answers[i] == second[i % second.length]){
-                secondCheck++;
-            }
-            if(answers[i] == three[i % three.length]){
-                threeCheck++;
-            }
+    public int[] solution(int[] answer) {
+        int[] a = {1, 2, 3, 4, 5};
+        int[] b = {2, 1, 2, 3, 2, 4, 2, 5};
+        int[] c = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
+        int[] score = new int[3];
+        for(int i=0; i<answer.length; i++) {
+            if(answer[i] == a[i%a.length]) {score[0]++;}
+            if(answer[i] == b[i%b.length]) {score[1]++;}
+            if(answer[i] == c[i%c.length]) {score[2]++;}
         }
-        
-        
-        List<Integer> list = new ArrayList<>();
-        
-        list.add(firstCheck);
-        list.add(secondCheck);
-        list.add(threeCheck);
-        
-        List<Integer> check = new ArrayList<>();
-        int max = 0;
-        
-        if(firstCheck >= secondCheck && firstCheck >= threeCheck){
-            max = firstCheck;
-        } else if(secondCheck >= firstCheck && secondCheck >= threeCheck){
-            max = secondCheck;
-        } else{
-            max = threeCheck;
-        }
-        
-        for(int i = 0; i < list.size(); i++){
-            if(max == list.get(i))
-                check.add(i + 1);
-        }
-        
-        answer = new int[check.size()];
-        
-        for(int i = 0; i < check.size(); i++){
-            answer[i] = check.get(i);
-        }
-        return answer;
-    } 
+        int maxScore = Math.max(score[0], Math.max(score[1], score[2]));
+        ArrayList<Integer> list = new ArrayList<>();
+        if(maxScore == score[0]) {list.add(1);}
+        if(maxScore == score[1]) {list.add(2);}
+        if(maxScore == score[2]) {list.add(3);}
+        return list.stream().mapToInt(i->i.intValue()).toArray();
+    }
 }
