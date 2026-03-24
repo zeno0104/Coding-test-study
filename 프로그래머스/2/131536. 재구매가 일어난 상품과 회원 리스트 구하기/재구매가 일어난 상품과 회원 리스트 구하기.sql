@@ -1,0 +1,7 @@
+SELECT USER_ID, PRODUCT_ID
+FROM ONLINE_SALE
+-- 회원ID, 상품 ID 같이 묶어야함
+-- 동일한 회원과 상품을 그룹으로 묶어야 집계 함수를 구할 수 있음
+GROUP BY USER_ID, PRODUCT_ID
+HAVING COUNT(*) >= 2
+ORDER BY USER_ID, PRODUCT_ID DESC;
