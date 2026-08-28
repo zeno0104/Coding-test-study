@@ -1,21 +1,46 @@
+import java.util.*;
 
-import java.util.ArrayList;
 class Solution {
-    public int[] solution(int[] answer) {
-        int[] a = {1, 2, 3, 4, 5};
-        int[] b = {2, 1, 2, 3, 2, 4, 2, 5};
-        int[] c = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
-        int[] score = new int[3];
-        for(int i=0; i<answer.length; i++) {
-            if(answer[i] == a[i%a.length]) {score[0]++;}
-            if(answer[i] == b[i%b.length]) {score[1]++;}
-            if(answer[i] == c[i%c.length]) {score[2]++;}
+    public int[] solution(int[] answers) {
+        int[] answer = {};
+        
+        int[] num1 = {1, 2, 3, 4, 5};
+        int[] num2 = {2, 1, 2, 3, 2, 4, 2, 5};
+        int[] num3 = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
+        
+        int num1Count = 0;
+        int num2Count = 0;
+        int num3Count = 0;
+        
+        for(int i = 0; i < answers.length; i++){
+            if(answers[i] == num1[i % num1.length]){
+                num1Count++;
+            } 
+            if(answers[i] == num2[i % num2.length]){
+                num2Count++;
+            }
+            if(answers[i] == num3[i % num3.length]){
+                num3Count++;
+            }
         }
-        int maxScore = Math.max(score[0], Math.max(score[1], score[2]));
-        ArrayList<Integer> list = new ArrayList<>();
-        if(maxScore == score[0]) {list.add(1);}
-        if(maxScore == score[1]) {list.add(2);}
-        if(maxScore == score[2]) {list.add(3);}
-        return list.stream().mapToInt(i->i.intValue()).toArray();
+        
+        int max = Math.max(num1Count, Math.max(num2Count, num3Count));
+        List<Integer> list = new LinkedList<>();
+        
+        if(max == num1Count)
+            list.add(1);
+        if(max == num2Count)
+            list.add(2);
+        if(max == num3Count)
+            list.add(3);
+        
+        answer = new int[list.size()];
+        
+        for(int i = 0; i < list.size(); i++){
+            answer[i] = list.get(i);
+        }
+        
+        
+        return answer;
     }
 }
