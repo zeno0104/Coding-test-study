@@ -3,19 +3,20 @@ import java.util.*;
 class Solution {
     public int solution(int[] numbers) {
         int answer = 0;
-        Arrays.sort(numbers);
         
-        Set<Integer> set = new HashSet<>();
+        int max = 0;
         
-        for(int n : numbers){
-            set.add(n);
+        List<Integer> list = new LinkedList<>();
+        for(int i = 0; i < numbers.length; i++){
+            max = Math.max(max, numbers[i]);
+            list.add(numbers[i]);
         }
         
-        for(int i = 0; i < 10; i++){
-            if(!set.contains(i))
+        for(int i = 0; i <= 9; i++){
+            if(!list.contains(i)){
                 answer += i;
+            }
         }
-    
         return answer;
     }
 }
