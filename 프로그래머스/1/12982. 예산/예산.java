@@ -3,21 +3,23 @@ import java.util.*;
 class Solution {
     public int solution(int[] d, int budget) {
         int answer = 0;
-        
+        int sum = 0;
         Arrays.sort(d);
         
-        int sum = 0;
-        
-        // 1 2 3 4 5
-        
         for(int i = 0; i < d.length; i++){
-            if(sum + d[i] > budget){
-                break;
-            }
             sum += d[i];
-            answer++;
+            if(sum == budget){
+                answer = i + 1;
+                break;
+            } else if(sum >= budget){
+                answer = i;
+                break;
+            } else if(i == d.length - 1){
+                answer = i + 1;
+            }
         }
         
         return answer;
     }
+    
 }
