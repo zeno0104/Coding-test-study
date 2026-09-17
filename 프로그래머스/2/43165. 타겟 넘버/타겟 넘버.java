@@ -1,30 +1,22 @@
 class Solution {
-    static boolean[] check;
-    static int answer = 0;
-    
-    public static void DFS(int[] numbers, int target, boolean[] check, int sum, int L){
-        if(L == numbers.length){
-            if(sum == target){
-               answer++;
-            }
-            return;
-        }
-         else{
-            if(!check[L]){
-                check[L] = true;
-                DFS(numbers, target, check, sum + numbers[L], L + 1);
-                check[L] = false;
-                DFS(numbers, target, check, sum - numbers[L], L + 1);
-            }
-        }
-    }
+    static int count = 0;
     
     public int solution(int[] numbers, int target) {
+        int answer = 0;
         
+        DFS(numbers, target, 0, 0);
         
-        check = new boolean[numbers.length];
-        
-        DFS(numbers, target, check, 0, 0);
-        return answer;
+        return count;
+    }
+    
+    public void DFS(int[] numbers, int target, int sum, int depth){
+        if(depth == numbers.length){
+            if(target == sum){
+                count++;
+            }
+        } else{
+            DFS(numbers, target, sum + numbers[depth], depth + 1);
+            DFS(numbers, target, sum - numbers[depth], depth + 1);
+        }
     }
 }
