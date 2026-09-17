@@ -4,23 +4,25 @@ class Solution {
     public int solution(int k, int[] tangerine) {
         int answer = 0;
         
-        Map<Integer, Integer> map = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap();
         
         for(int i = 0; i < tangerine.length; i++){
-            map.put(tangerine[i], map.getOrDefault(tangerine[i], 0) + 1);
+            if(!map.containsKey(tangerine[i])){
+                map.put(tangerine[i], 1);
+            } else{         
+               map.put(tangerine[i], map.get(tangerine[i]) + 1);   
+            }
         }
         
         List<Integer> list = new ArrayList<>(map.values());
         
         Collections.sort(list, Collections.reverseOrder());
         
-        int sum = 0;;
         for(int num : list){
-            sum += num;
-            answer++;
-            if(sum >= k){
+            if(k <= 0)
                 break;
-            }
+            k -= num;
+            answer++;
         }
         
         return answer;
