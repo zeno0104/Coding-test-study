@@ -3,9 +3,15 @@ class Solution {
         int answer = 0;
         
         while(n >= a){
-            answer += (n / a) * b;
-            int cur = n % a;
-            n = (n / a) * b + cur;
+            int count = n / a;
+            int namerge = n % a;
+            
+           
+            answer += count * b;
+            n = count * b + namerge;
+            
+            
+            // System.out.println("n = " + n + ", namerge = " + namerge + ", answer = " + answer);
         }
         return answer;
     }
