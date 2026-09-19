@@ -2,22 +2,36 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int k, int[] score) {
-        int[] answer = new int[score.length];
-        List<Integer> list = new ArrayList<>();
+        int[] answer = {};
+        
+        List<Integer> list = new LinkedList();
+        List<Integer> answerList = new LinkedList();
         
         for(int i = 0; i < score.length; i++){
-            if(list.size() < k){
-                list.add(score[i]);
-                Collections.sort(list, Collections.reverseOrder());
-                answer[i] = list.get(list.size() - 1);
+            if(list.size() == k){
+                Collections.sort(list);
+                
+                if(list.get(0) > score[i]){
+                    
+                } else if(list.get(0) < score[i]){
+                    list.add(score[i]);
+                    Collections.sort(list);
+                    
+                    list.remove(0);
+                }
             } else{
                 list.add(score[i]);
-                Collections.sort(list, Collections.reverseOrder());
-                answer[i] = list.get(k - 1);
+                Collections.sort(list);
+                
             }
             
+            answerList.add(list.get(0));
+                
         }
-        
+        answer = new int[answerList.size()];
+        for(int i = 0; i < answer.length; i++){
+            answer[i] = answerList.get(i);
+        }
         return answer;
     }
 }
