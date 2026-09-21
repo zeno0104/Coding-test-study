@@ -1,7 +1,7 @@
 class Solution {
     public String solution(String[] cards1, String[] cards2, String[] goal) {
-        String answer = "";
-        
+        int oneCardLength = cards1.length;
+        int twoCardLength = cards2.length;
         
         int first = 0;
         int second = 0;
@@ -9,22 +9,19 @@ class Solution {
         boolean flag = true;
         
         for(int i = 0; i < goal.length; i++){
+            if(!flag)
+                break;
             
-            if(goal[i].equals(cards1[first])){
-                if(cards1.length > first + 1)
-                    first++;
-            } else if(goal[i].equals(cards2[second])){
-                if(cards2.length > second + 1)
-                    second++;
+            if(first < oneCardLength && cards1[first].equals(goal[i])){
+                first++;
+            } else if(second < twoCardLength && cards2[second].equals(goal[i])){
+                second++;
             } else{
                 flag = false;
                 break;
             }
         }
-        if(flag)
-            answer = "Yes";
-        else
-            answer = "No";
-        return answer;
+        
+        return flag ? "Yes" : "No";
     }
 }
