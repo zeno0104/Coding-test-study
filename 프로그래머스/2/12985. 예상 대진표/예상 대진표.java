@@ -6,12 +6,10 @@ class Solution
     {
         int answer = 0;
         
-        while(true){
-            answer++;
+        while(a != b){
             a = (a + 1) / 2;
             b = (b + 1) / 2;
-            
-            if(a == b) break;
+            answer++;
         }
         
         return answer;
