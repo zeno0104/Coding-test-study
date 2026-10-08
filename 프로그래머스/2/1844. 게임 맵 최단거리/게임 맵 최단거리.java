@@ -10,8 +10,6 @@ class Solution {
         int n = maps.length;
         int m = maps[0].length;
         
-        if(maps[n - 1][m - 1] == 0 || maps[0][0] == 0)
-            return -1;
         
         boolean[][] visited = new boolean[n][m];
         
