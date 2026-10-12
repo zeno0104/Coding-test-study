@@ -30,7 +30,7 @@ class Solution {
         int c = 1;
         
         for(int i = 1; i < list.size(); i++){
-            if(check >=list.get(i)){
+            if(check >= list.get(i)){
                 c++;
             } else{
                 answerList.add(c);
