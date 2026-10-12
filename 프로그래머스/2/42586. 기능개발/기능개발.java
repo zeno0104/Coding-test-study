@@ -2,43 +2,53 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int[] progresses, int[] speeds) {
-        int[] answer;
+        int[] answer = {};
         
-        // 7 3 9 
-        // 2 1 
-            
-        // 5 10 1 1 20 1
-        // 1 3 2
-        int[] check = new int[progresses.length];
+        List<Integer> list = new LinkedList<>();
+        
         for(int i = 0; i < progresses.length; i++){
-            int sum = progresses[i];
-            int count = 0;
+            int progress = progresses[i];
+            int speed = speeds[i];
             
-            while(sum < 100){
-                count++;
-                sum += speeds[i];
+            int point = 1;
+            
+            while(true){
+                if(progress + speed * point >= 100){
+                    list.add(point);
+                    break;
+                }
+                point++;
             }
-            check[i] = count;
         }
         
-        List<Integer> list = new ArrayList<>();
-        int i = 0;
-        while(i < check.length){
-            int j = i + 1;
-            int count = 1;
-            while(j < check.length && check[j] <= check[i]){
-                count++;
-                j++;
+        int count = 0;
+        System.out.println("list : " + list);
+        
+        List<Integer> answerList = new LinkedList<>();
+        
+        int check = list.get(0);
+        int c = 1;
+        
+        for(int i = 1; i < list.size(); i++){
+            if(check >=list.get(i)){
+                c++;
+            } else{
+                answerList.add(c);
+                c = 1;
+                check = list.get(i);
             }
-            list.add(count);
-            i = j;
         }
         
-        answer = new int[list.size()];
+        answerList.add(c);
         
-        for(int j = 0; j < answer.length; j++){
-            answer[j] = list.get(j);
+        System.out.println(answerList);
+        
+        answer = new int[answerList.size()];
+        
+        for(int i = 0; i < answer.length; i++){
+            answer[i] = answerList.get(i);
         }
+        
         return answer;
     }
 }
